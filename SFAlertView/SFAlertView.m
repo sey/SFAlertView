@@ -10,8 +10,6 @@
 #import "UIWindow+SIUtils.h"
 #import "UIView+Autolayout.h"
 
-#define PREFERRED_WIDTH 450
-
 const UIWindowLevel UIWindowLevelSFAlert = 1999.0;  // don't overlap system's alert
 const UIWindowLevel UIWindowLevelSFAlertBackground = 1998.0; // below the alert window
 
@@ -325,8 +323,13 @@ static SFAlertView *__sf_alert_current_view;
 
 + (void)initialize
 {
-    SFAlertView *appearance = [SFAlertView appearance];
+    if (self != [SFAlertView class])
+        return;
+    
+    SFAlertView *appearance = [self appearance];
     appearance.closeButtonBackgroundColor = [UIColor redColor];
+    appearance.alertViewPreferredWidth = 450.0f;
+    appearance.buttonsPreferredWidth = 150.0f;
 }
 
 /**
@@ -445,16 +448,10 @@ static SFAlertView *__sf_alert_current_view;
             
             UILabel *label = [UILabel new];
             label.numberOfLines = 0;
-            label.preferredMaxLayoutWidth = PREFERRED_WIDTH - 40;
+            label.preferredMaxLayoutWidth = self.alertViewPreferredWidth - 40;
             label.text = self.message;
-            [label addConstraint:[NSLayoutConstraint
-                                  constraintWithItem:label
-                                  attribute:NSLayoutAttributeWidth
-                                  relatedBy:NSLayoutRelationEqual
-                                  toItem:nil
-                                  attribute:NSLayoutAttributeNotAnAttribute
-                                  multiplier:1.0f
-                                  constant:PREFERRED_WIDTH]];
+            
+            [label autoSetDimension:ALDimensionWidth toSize:self.alertViewPreferredWidth];
             [self setupContentView:label];
         }
     }
@@ -539,7 +536,7 @@ static SFAlertView *__sf_alert_current_view;
         UILabel *label = [UILabel new];
         label.translatesAutoresizingMaskIntoConstraints = NO;
         label.numberOfLines = 0;
-        label.preferredMaxLayoutWidth = PREFERRED_WIDTH - 40;
+        label.preferredMaxLayoutWidth = self.alertViewPreferredWidth - 40;
         label.text = self.title;
         label;
     });
@@ -671,7 +668,7 @@ static SFAlertView *__sf_alert_current_view;
     
     self.buttons = [[NSMutableArray alloc] initWithCapacity:self.items.count];
     
-    CGFloat buttonWidth = 100;
+    CGFloat buttonWidth = self.buttonsPreferredWidth;
     
     for (int i = 0; i < self.items.count; i++)
     {
@@ -849,6 +846,24 @@ static SFAlertView *__sf_alert_current_view;
     }
     _closeButtonBackgroundColor = closeButtonBackgroundColor;
     self.closeButton.backgroundColor = _closeButtonBackgroundColor;
+}
+
+- (void)setAlertViewPreferredWidth:(CGFloat)alertViewPreferredWidth
+{
+    if (_alertViewPreferredWidth == alertViewPreferredWidth)
+    {
+        return;
+    }
+    _alertViewPreferredWidth = alertViewPreferredWidth;
+}
+
+- (void)setButtonsPreferredWidth:(CGFloat)buttonsPreferredWidth
+{
+    if (_buttonsPreferredWidth == buttonsPreferredWidth)
+    {
+        return;
+    }
+    _buttonsPreferredWidth = buttonsPreferredWidth;
 }
 
 @end

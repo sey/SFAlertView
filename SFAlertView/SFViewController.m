@@ -17,6 +17,7 @@
 
 - (IBAction)showAlertViewAction:(id)sender
 {
+    [[SFAlertView appearance] setButtonsPreferredWidth:150];
     {
         SFAlertView *alertView = [[SFAlertView alloc] initWithTitle:@"Ullamcorper Dapibus Nibh"
                                                          andMessage:@"Sit Dolor Bibendum Venenatis"];

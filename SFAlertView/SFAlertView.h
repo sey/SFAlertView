@@ -27,8 +27,8 @@ typedef NS_ENUM(NSInteger, SFAlertViewBackgroundStyle) {
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *message;
 
-@property (nonatomic, assign) CGFloat alertViewPreferredWidth;
-@property (nonatomic, assign) CGFloat buttonsPreferredWidth;
+@property (nonatomic, assign) CGFloat alertViewPreferredWidth UI_APPEARANCE_SELECTOR;
+@property (nonatomic, assign) CGFloat buttonsPreferredWidth UI_APPEARANCE_SELECTOR;
 
 @property (nonatomic, readonly, getter = isVisible) BOOL visible;
 
