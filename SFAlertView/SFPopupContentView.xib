@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1" customClass="SFPopupContentView">
+            <rect key="frame" x="0.0" y="0.0" width="347" height="152"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xqh-h0-63C">
+                    <rect key="frame" x="281" y="102" width="46" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3D7-cO-0HZ">
+                    <rect key="frame" x="278" y="19" width="51" height="31"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </switch>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCL-l1-7EI">
+                    <rect key="frame" x="20" y="24" width="184" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="184" id="V48-3V-CSV"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGa-cC-Sf2">
+                    <rect key="frame" x="20" y="106" width="184" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="184" id="KYQ-RA-ZW0"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="xqh-h0-63C" firstAttribute="leading" secondItem="OGa-cC-Sf2" secondAttribute="trailing" constant="77" id="169-nX-m7m"/>
+                <constraint firstItem="OGa-cC-Sf2" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="3JK-Gs-FBI"/>
+                <constraint firstAttribute="bottom" secondItem="xqh-h0-63C" secondAttribute="bottom" constant="20" id="5XU-Dm-OW8"/>
+                <constraint firstItem="rCL-l1-7EI" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="7sa-6M-upn"/>
+                <constraint firstItem="xqh-h0-63C" firstAttribute="top" secondItem="3D7-cO-0HZ" secondAttribute="bottom" constant="52" id="A0l-8m-La9"/>
+                <constraint firstItem="3D7-cO-0HZ" firstAttribute="top" secondItem="1" secondAttribute="top" constant="19" id="DKL-NK-7qE"/>
+                <constraint firstAttribute="trailing" secondItem="xqh-h0-63C" secondAttribute="trailing" constant="20" id="GOS-M6-HvX"/>
+                <constraint firstItem="rCL-l1-7EI" firstAttribute="top" secondItem="1" secondAttribute="top" constant="24" id="Gua-TM-GVG"/>
+                <constraint firstAttribute="trailing" secondItem="3D7-cO-0HZ" secondAttribute="trailing" constant="20" id="WWI-Pj-E7e"/>
+                <constraint firstAttribute="bottom" secondItem="OGa-cC-Sf2" secondAttribute="bottom" constant="25" id="gAU-Vl-jlA"/>
+                <constraint firstItem="3D7-cO-0HZ" firstAttribute="leading" secondItem="rCL-l1-7EI" secondAttribute="trailing" constant="74" id="neg-DD-5cZ"/>
+                <constraint firstItem="OGa-cC-Sf2" firstAttribute="top" secondItem="rCL-l1-7EI" secondAttribute="bottom" constant="61" id="tlh-zo-l9S"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>

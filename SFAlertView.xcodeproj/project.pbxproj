@@ -26,6 +26,11 @@
 		2F0872B9188ADD5300C2F29A /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2F0872B4188ADD5300C2F29A /* SIAlertView.bundle */; };
 		2F0872BA188ADD5300C2F29A /* SIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0872B6188ADD5300C2F29A /* SIAlertView.m */; };
 		2F0872BB188ADD5300C2F29A /* UIWindow+SIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0872B8188ADD5300C2F29A /* UIWindow+SIUtils.m */; };
+		2F0872BD188D140600C2F29A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F0872BC188D140600C2F29A /* QuartzCore.framework */; };
+		2F0872C0188D14A200C2F29A /* SFAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0872BF188D14A200C2F29A /* SFAlertView.m */; };
+		2FF425EF188D64D600D4CB3A /* SFPopupContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF425EE188D64D600D4CB3A /* SFPopupContentView.m */; };
+		2FF425F1188D64F400D4CB3A /* SFPopupContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FF425F0188D64F400D4CB3A /* SFPopupContentView.xib */; };
+		D12900F768A343A1A8D0B969 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A400AD1F642B422A9A550354 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +71,14 @@
 		2F0872B6188ADD5300C2F29A /* SIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIAlertView.m; sourceTree = "<group>"; };
 		2F0872B7188ADD5300C2F29A /* UIWindow+SIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+SIUtils.h"; sourceTree = "<group>"; };
 		2F0872B8188ADD5300C2F29A /* UIWindow+SIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+SIUtils.m"; sourceTree = "<group>"; };
+		2F0872BC188D140600C2F29A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		2F0872BE188D14A100C2F29A /* SFAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAlertView.h; sourceTree = "<group>"; };
+		2F0872BF188D14A200C2F29A /* SFAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAlertView.m; sourceTree = "<group>"; };
+		2FF425ED188D64D600D4CB3A /* SFPopupContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPopupContentView.h; sourceTree = "<group>"; };
+		2FF425EE188D64D600D4CB3A /* SFPopupContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPopupContentView.m; sourceTree = "<group>"; };
+		2FF425F0188D64F400D4CB3A /* SFPopupContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFPopupContentView.xib; sourceTree = "<group>"; };
+		6E22F1A8CDCA43EF9A393019 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		A400AD1F642B422A9A550354 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,9 +86,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F0872BD188D140600C2F29A /* QuartzCore.framework in Frameworks */,
 				2F08727C188AD73E00C2F29A /* CoreGraphics.framework in Frameworks */,
 				2F08727E188AD73E00C2F29A /* UIKit.framework in Frameworks */,
 				2F08727A188AD73E00C2F29A /* Foundation.framework in Frameworks */,
+				D12900F768A343A1A8D0B969 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +114,7 @@
 				2F0872A1188AD73E00C2F29A /* SFAlertViewTests */,
 				2F087278188AD73E00C2F29A /* Frameworks */,
 				2F087277188AD73E00C2F29A /* Products */,
+				6E22F1A8CDCA43EF9A393019 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,10 +130,12 @@
 		2F087278188AD73E00C2F29A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F0872BC188D140600C2F29A /* QuartzCore.framework */,
 				2F087279188AD73E00C2F29A /* Foundation.framework */,
 				2F08727B188AD73E00C2F29A /* CoreGraphics.framework */,
 				2F08727D188AD73E00C2F29A /* UIKit.framework */,
 				2F08729B188AD73E00C2F29A /* XCTest.framework */,
+				A400AD1F642B422A9A550354 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -125,6 +143,8 @@
 		2F08727F188AD73E00C2F29A /* SFAlertView */ = {
 			isa = PBXGroup;
 			children = (
+				2F0872BE188D14A100C2F29A /* SFAlertView.h */,
+				2F0872BF188D14A200C2F29A /* SFAlertView.m */,
 				2F0872B4188ADD5300C2F29A /* SIAlertView.bundle */,
 				2F0872B5188ADD5300C2F29A /* SIAlertView.h */,
 				2F0872B6188ADD5300C2F29A /* SIAlertView.m */,
@@ -140,6 +160,9 @@
 				2F087292188AD73E00C2F29A /* SFViewController.m */,
 				2F087294188AD73E00C2F29A /* Images.xcassets */,
 				2F087280188AD73E00C2F29A /* Supporting Files */,
+				2FF425ED188D64D600D4CB3A /* SFPopupContentView.h */,
+				2FF425EE188D64D600D4CB3A /* SFPopupContentView.m */,
+				2FF425F0188D64F400D4CB3A /* SFPopupContentView.xib */,
 			);
 			path = SFAlertView;
 			sourceTree = "<group>";
@@ -180,9 +203,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F0872AB188AD73E00C2F29A /* Build configuration list for PBXNativeTarget "SFAlertView" */;
 			buildPhases = (
+				CFB2148957A042E39AF2D5C6 /* Check Pods Manifest.lock */,
 				2F087272188AD73E00C2F29A /* Sources */,
 				2F087273188AD73E00C2F29A /* Frameworks */,
 				2F087274188AD73E00C2F29A /* Resources */,
+				3F6576377829440C886B1388 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -252,6 +277,7 @@
 			files = (
 				2F087290188AD73E00C2F29A /* Main_iPad.storyboard in Resources */,
 				2F0872B9188ADD5300C2F29A /* SIAlertView.bundle in Resources */,
+				2FF425F1188D64F400D4CB3A /* SFPopupContentView.xib in Resources */,
 				2F087295188AD73E00C2F29A /* Images.xcassets in Resources */,
 				2F08728D188AD73E00C2F29A /* Main_iPhone.storyboard in Resources */,
 				2F087284188AD73E00C2F29A /* InfoPlist.strings in Resources */,
@@ -268,6 +294,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3F6576377829440C886B1388 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CFB2148957A042E39AF2D5C6 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2F087272188AD73E00C2F29A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -275,9 +334,11 @@
 			files = (
 				2F087286188AD73E00C2F29A /* main.m in Sources */,
 				2F0872BA188ADD5300C2F29A /* SIAlertView.m in Sources */,
+				2FF425EF188D64D600D4CB3A /* SFPopupContentView.m in Sources */,
 				2F0872B3188ADCA800C2F29A /* SPMPopup.m in Sources */,
 				2F087293188AD73E00C2F29A /* SFViewController.m in Sources */,
 				2F08728A188AD73E00C2F29A /* SFAppDelegate.m in Sources */,
+				2F0872C0188D14A200C2F29A /* SFAlertView.m in Sources */,
 				2F0872BB188ADD5300C2F29A /* UIWindow+SIUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,7 +430,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -403,7 +464,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -412,12 +473,14 @@
 		};
 		2F0872AC188AD73E00C2F29A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E22F1A8CDCA43EF9A393019 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SFAlertView/SFAlertView-Prefix.pch";
 				INFOPLIST_FILE = "SFAlertView/SFAlertView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -425,12 +488,14 @@
 		};
 		2F0872AD188AD73E00C2F29A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E22F1A8CDCA43EF9A393019 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SFAlertView/SFAlertView-Prefix.pch";
 				INFOPLIST_FILE = "SFAlertView/SFAlertView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -497,6 +562,7 @@
 				2F0872AD188AD73E00C2F29A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2F0872AE188AD73E00C2F29A /* Build configuration list for PBXNativeTarget "SFAlertViewTests" */ = {
 			isa = XCConfigurationList;
@@ -505,6 +571,7 @@
 				2F0872B0188AD73E00C2F29A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

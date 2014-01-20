@@ -7,6 +7,7 @@
 //
 
 #import "SFViewController.h"
+#import "SFAlertView.h"
 
 @interface SFViewController ()
 
@@ -14,16 +15,57 @@
 
 @implementation SFViewController
 
-- (void)viewDidLoad
+- (IBAction)showAlertViewAction:(id)sender
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    {
+        SFAlertView *alertView = [[SFAlertView alloc] initWithTitle:@"Ullamcorper Dapibus Nibh"
+                                                         andMessage:@"Sit Dolor Bibendum Venenatis"];
+        
+        [alertView addButtonWithTitle:@"Cancel" type:SFAlertViewButtonTypeCancel handler:^(SFAlertView *alertView) {
+            
+        }];
+        [alertView addButtonWithTitle:@"Ok" type:SFAlertViewButtonTypeDefault handler:nil];
+        [alertView show];
+    }
+    
+    {
+        SFAlertView *alertView = [[SFAlertView alloc] initWithTitle:@"Vehicula Amet Elit"
+                                                         andMessage:@"Vestibulum id ligula porta felis euismod semper. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum."];
+        
+        [alertView addButtonWithTitle:@"Ok" type:SFAlertViewButtonTypeDefault handler:nil];
+        [alertView show];
+    }
+    
+    {
+        SFAlertView *alertView = [[SFAlertView alloc] initWithTitle:nil
+                                                         andMessage:@"Vestibulum id ligula porta felis euismod semper. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum."];
+        
+        [alertView addButtonWithTitle:@"Ok" type:SFAlertViewButtonTypeDefault handler:nil];
+        [alertView show];
+    }
 }
 
-- (void)didReceiveMemoryWarning
+- (IBAction)showPopupViewAction:(id)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    {
+        UINib *nib = [UINib nibWithNibName:@"SFPopupContentView" bundle:nil];
+        NSArray *views = [nib instantiateWithOwner:nil options:nil];
+        UIView *view = [views lastObject];
+        
+        SFAlertView *alertView = [SFAlertView new];
+        [alertView setContentView:view];
+        [alertView show];
+    }
+    
+    {
+        UINib *nib = [UINib nibWithNibName:@"SFPopupContentView" bundle:nil];
+        NSArray *views = [nib instantiateWithOwner:nil options:nil];
+        UIView *view = [views lastObject];
+        
+        SFAlertView *alertView = [SFAlertView new];
+        [alertView setContentView:view];
+        [alertView show];
+    }
 }
 
 @end

@@ -1,5 +1,12 @@
 # General
+
 .DS_Store
+
+# Xcode
+
 xcuserdata
 DerivedData
-.DS_Store
+
+# CocoaPods
+
+Pods/
