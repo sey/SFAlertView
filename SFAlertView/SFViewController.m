@@ -15,6 +15,28 @@
 
 @implementation SFViewController
 
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return YES;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    
+}
+
+- (void)logout
+{
+    [SFAlertView cleanPopup];
+}
+
 - (IBAction)showAlertViewAction:(id)sender
 {
     [[SFAlertView appearance] setButtonsPreferredWidth:150];
@@ -62,15 +84,7 @@
         [alertView show];
     }
     
-    {
-        UINib *nib = [UINib nibWithNibName:@"SFPopupContentView" bundle:nil];
-        NSArray *views = [nib instantiateWithOwner:nil options:nil];
-        UIView *view = [views lastObject];
-        
-        SFAlertView *alertView = [SFAlertView new];
-        [alertView setContentView:view];
-        [alertView show];
-    }
+    
 }
 
 @end

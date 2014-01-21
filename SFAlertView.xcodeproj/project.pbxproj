@@ -22,9 +22,6 @@
 		2F08729E188AD73E00C2F29A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F08727D188AD73E00C2F29A /* UIKit.framework */; };
 		2F0872A6188AD73E00C2F29A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2F0872A4188AD73E00C2F29A /* InfoPlist.strings */; };
 		2F0872A8188AD73E00C2F29A /* SFAlertViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0872A7188AD73E00C2F29A /* SFAlertViewTests.m */; };
-		2F0872B3188ADCA800C2F29A /* SPMPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0872B2188ADCA800C2F29A /* SPMPopup.m */; };
-		2F0872B9188ADD5300C2F29A /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2F0872B4188ADD5300C2F29A /* SIAlertView.bundle */; };
-		2F0872BA188ADD5300C2F29A /* SIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0872B6188ADD5300C2F29A /* SIAlertView.m */; };
 		2F0872BB188ADD5300C2F29A /* UIWindow+SIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0872B8188ADD5300C2F29A /* UIWindow+SIUtils.m */; };
 		2F0872BD188D140600C2F29A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F0872BC188D140600C2F29A /* QuartzCore.framework */; };
 		2F0872C0188D14A200C2F29A /* SFAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0872BF188D14A200C2F29A /* SFAlertView.m */; };
@@ -66,11 +63,6 @@
 		2F0872A3188AD73E00C2F29A /* SFAlertViewTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SFAlertViewTests-Info.plist"; sourceTree = "<group>"; };
 		2F0872A5188AD73E00C2F29A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2F0872A7188AD73E00C2F29A /* SFAlertViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFAlertViewTests.m; sourceTree = "<group>"; };
-		2F0872B1188ADCA800C2F29A /* SPMPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPMPopup.h; sourceTree = "<group>"; };
-		2F0872B2188ADCA800C2F29A /* SPMPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPMPopup.m; sourceTree = "<group>"; };
-		2F0872B4188ADD5300C2F29A /* SIAlertView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SIAlertView.bundle; sourceTree = "<group>"; };
-		2F0872B5188ADD5300C2F29A /* SIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIAlertView.h; sourceTree = "<group>"; };
-		2F0872B6188ADD5300C2F29A /* SIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIAlertView.m; sourceTree = "<group>"; };
 		2F0872B7188ADD5300C2F29A /* UIWindow+SIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+SIUtils.h"; sourceTree = "<group>"; };
 		2F0872B8188ADD5300C2F29A /* UIWindow+SIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+SIUtils.m"; sourceTree = "<group>"; };
 		2F0872BC188D140600C2F29A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -151,13 +143,8 @@
 				2FF425F3188E6F7900D4CB3A /* icon-close@2x.png */,
 				2F0872BE188D14A100C2F29A /* SFAlertView.h */,
 				2F0872BF188D14A200C2F29A /* SFAlertView.m */,
-				2F0872B4188ADD5300C2F29A /* SIAlertView.bundle */,
-				2F0872B5188ADD5300C2F29A /* SIAlertView.h */,
-				2F0872B6188ADD5300C2F29A /* SIAlertView.m */,
 				2F0872B7188ADD5300C2F29A /* UIWindow+SIUtils.h */,
 				2F0872B8188ADD5300C2F29A /* UIWindow+SIUtils.m */,
-				2F0872B1188ADCA800C2F29A /* SPMPopup.h */,
-				2F0872B2188ADCA800C2F29A /* SPMPopup.m */,
 				2F087288188AD73E00C2F29A /* SFAppDelegate.h */,
 				2F087289188AD73E00C2F29A /* SFAppDelegate.m */,
 				2F08728B188AD73E00C2F29A /* Main_iPhone.storyboard */,
@@ -282,7 +269,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F087290188AD73E00C2F29A /* Main_iPad.storyboard in Resources */,
-				2F0872B9188ADD5300C2F29A /* SIAlertView.bundle in Resources */,
 				2FF425F5188E6F7900D4CB3A /* icon-close@2x.png in Resources */,
 				2FF425F1188D64F400D4CB3A /* SFPopupContentView.xib in Resources */,
 				2F087295188AD73E00C2F29A /* Images.xcassets in Resources */,
@@ -341,9 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F087286188AD73E00C2F29A /* main.m in Sources */,
-				2F0872BA188ADD5300C2F29A /* SIAlertView.m in Sources */,
 				2FF425EF188D64D600D4CB3A /* SFPopupContentView.m in Sources */,
-				2F0872B3188ADCA800C2F29A /* SPMPopup.m in Sources */,
 				2F087293188AD73E00C2F29A /* SFViewController.m in Sources */,
 				2F08728A188AD73E00C2F29A /* SFAppDelegate.m in Sources */,
 				2F0872C0188D14A200C2F29A /* SFAlertView.m in Sources */,

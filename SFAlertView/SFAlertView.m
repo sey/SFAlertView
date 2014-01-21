@@ -141,13 +141,6 @@ static SFAlertView *__sf_alert_current_view;
     [self.alertView setup];
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-                                duration:(NSTimeInterval)duration
-{
-    //[self.alertView resetTransition];
-    //[self.alertView invalidateLayout];
-}
-
 #ifdef __IPHONE_7_0
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
                                          duration:(NSTimeInterval)duration
@@ -164,6 +157,13 @@ static SFAlertView *__sf_alert_current_view;
     UIViewController *viewController = [self.alertView.oldKeyWindow currentViewController];
     if (viewController)
     {
+        NSLog(@"UIInterfaceOrientationMaskPortrait: %d", UIInterfaceOrientationMaskPortrait);
+        NSLog(@"UIInterfaceOrientationMaskLandscapeLeft: %d", UIInterfaceOrientationMaskLandscapeLeft);
+        NSLog(@"UIInterfaceOrientationMaskLandscapeRight: %d", UIInterfaceOrientationMaskLandscapeRight);
+        NSLog(@"UIInterfaceOrientationMaskPortraitUpsideDown: %d", UIInterfaceOrientationMaskPortraitUpsideDown);
+        NSLog(@"UIInterfaceOrientationMaskLandscape: %d", UIInterfaceOrientationMaskLandscape);
+        NSLog(@"UIInterfaceOrientationMaskAll: %d", UIInterfaceOrientationMaskAll);
+        NSLog(@"UIInterfaceOrientationMaskAllButUpsideDown: %d", UIInterfaceOrientationMaskAllButUpsideDown);
         return [viewController supportedInterfaceOrientations];
     }
     return UIInterfaceOrientationMaskAll;
@@ -323,8 +323,28 @@ static SFAlertView *__sf_alert_current_view;
     appearance.buttonColor = [UIColor greenColor];
     appearance.cancelButtonColor = [UIColor blackColor];
     appearance.destructiveButtonColor = [UIColor redColor];
+    appearance.separatorColor = [UIColor grayColor];
     appearance.alertViewPreferredWidth = 450.0f;
     appearance.buttonsPreferredWidth = 150.0f;
+}
+
++ (void)cleanPopup
+{
+    NSMutableIndexSet *alertToDeleteIndexes = [NSMutableIndexSet new];
+    for (NSUInteger i = 0; i < [SFAlertView sharedQueue].count; i++)
+    {
+        SFAlertView *alertView = [SFAlertView sharedQueue][i];
+        if (alertView.alertViewStyle == SFAlertViewStylePopup && !alertView.isVisible)
+        {
+            [alertToDeleteIndexes addIndex:i];
+        }
+    }
+    [[SFAlertView sharedQueue] removeObjectsAtIndexes:alertToDeleteIndexes];
+    
+    if ([SFAlertView currentAlertView].alertViewStyle == SFAlertViewStylePopup)
+    {
+        [[SFAlertView currentAlertView] dismissAnimated:NO cleanup:YES];
+    }
 }
 
 /**
@@ -398,7 +418,10 @@ static SFAlertView *__sf_alert_current_view;
         return;
     }
     
-    // TODO: add notifications
+    if (self.willShowHandler)
+    {
+        self.willShowHandler(self);
+    }
     
     self.visible = YES;
     
@@ -422,11 +445,124 @@ static SFAlertView *__sf_alert_current_view;
         self.alertWindow = window;
     }
     [self.alertWindow makeKeyAndVisible];
+    
+    [self transitionInCompletion:^
+    {
+        if (self.didShowHandler)
+        {
+            self.didShowHandler(self);
+        }
+        
+        [SFAlertView setAnimating:NO];
+        
+        NSInteger index = [[SFAlertView sharedQueue] indexOfObject:self];
+        if (index < [SFAlertView sharedQueue].count - 1)
+        {
+            [self dismissAnimated:YES cleanup:NO]; // dismiss to show next alert view
+        }
+    }];
 }
 
 - (void)dismissAnimated:(BOOL)animated
 {
     [self dismissAnimated:animated cleanup:YES];
+}
+
+#pragma mark - Animation Methods
+
+- (void)transitionInCompletion:(void(^)(void))completion
+{
+    UIView *superview = self.superview;
+    NSArray *constraints = superview.constraints;
+    
+    NSLayoutConstraint *verticalConstraint = nil;
+    for (NSLayoutConstraint *constraint in constraints)
+    {
+        if (constraint.firstAttribute == NSLayoutAttributeCenterY &&
+            constraint.secondAttribute == NSLayoutAttributeCenterY)
+        {
+            verticalConstraint = constraint;
+            break;
+        }
+    }
+    
+    if (verticalConstraint)
+    {
+        CGFloat height = superview.bounds.size.width;
+        verticalConstraint.constant = height * 0.5 + CGRectGetHeight(self.bounds) * 0.5;
+        [superview setNeedsUpdateConstraints];
+        [superview layoutIfNeeded];
+        
+        verticalConstraint.constant = 0;
+        [superview setNeedsUpdateConstraints];
+        [UIView
+         animateWithDuration:0.3
+         delay:0.0f
+         options:UIViewAnimationOptionCurveEaseOut
+         animations:^
+        {
+            [superview layoutIfNeeded];
+        }
+         completion:^(BOOL finished) {
+             if (completion)
+             {
+                 completion();
+             }
+         }];
+    }
+    else
+    {
+        if (completion)
+        {
+            completion();
+        }
+    }
+}
+
+- (void)transitionOutCompletion:(void(^)(void))completion
+{
+    UIView *superview = self.superview;
+    NSArray *constraints = superview.constraints;
+    
+    NSLayoutConstraint *verticalConstraint = nil;
+    for (NSLayoutConstraint *constraint in constraints)
+    {
+        if (constraint.firstAttribute == NSLayoutAttributeCenterY &&
+            constraint.secondAttribute == NSLayoutAttributeCenterY)
+        {
+            verticalConstraint = constraint;
+            break;
+        }
+    }
+    
+    if (verticalConstraint)
+    {
+        CGFloat height = superview.bounds.size.width;
+        verticalConstraint.constant = height * 0.5 + CGRectGetHeight(self.bounds) * 0.5;
+        [superview setNeedsUpdateConstraints];
+        
+        [UIView
+         animateWithDuration:0.3
+         delay:0.0f
+         options:UIViewAnimationOptionCurveEaseOut
+         animations:^
+         {
+             [superview layoutIfNeeded];
+         }
+         completion:^(BOOL finished) {
+             if (completion)
+             {
+                 completion();
+             }
+         }];
+    }
+    else
+    {
+        if (completion)
+        {
+            completion();
+        }
+    }
 }
 
 #pragma mark - Setup Methods
@@ -591,7 +727,7 @@ static SFAlertView *__sf_alert_current_view;
     self.separatorView = ({
         UIView *view = [UIView new];
         view.translatesAutoresizingMaskIntoConstraints = NO;
-        view.backgroundColor = [UIColor grayColor];
+        view.backgroundColor = self.separatorColor;
         view;
     });
     
@@ -766,7 +902,13 @@ static SFAlertView *__sf_alert_current_view;
 {
     BOOL isVisible = self.isVisible;
     
-    // TODO: add notifications
+    if (isVisible)
+    {
+        if (self.willDismissHandler)
+        {
+            self.willDismissHandler(self);
+        }
+    }
     
     void (^dismissComplete)(void) = ^{
         self.visible = NO;
@@ -789,7 +931,13 @@ static SFAlertView *__sf_alert_current_view;
         
         [SFAlertView setAnimating:NO];
         
-        // TODO: add notifications
+        if (isVisible)
+        {
+            if (self.didDismissHandler)
+            {
+                self.didDismissHandler(self);
+            }
+        }
         
         // check if we should show next alert
         if (!isVisible)
@@ -815,9 +963,9 @@ static SFAlertView *__sf_alert_current_view;
     if (animated && isVisible)
     {
         [SFAlertView setAnimating:YES];
-        dismissComplete();
+        [self transitionOutCompletion:dismissComplete];
         
-        if ([SFAlertView sharedQueue].count == 0)
+        if ([SFAlertView sharedQueue].count == 1)
         {
             [SFAlertView hideBackgroundAnimated:YES];
         }
@@ -925,6 +1073,16 @@ static SFAlertView *__sf_alert_current_view;
                    forState:(UIControlState)state
 {
     [self.closeButton setImage:image forState:state];
+}
+
+- (void)setSeparatorColor:(UIColor *)separatorColor
+{
+    if (_separatorColor == separatorColor)
+    {
+        return;
+    }
+    _separatorColor = separatorColor;
+    self.separatorView.backgroundColor = _separatorColor;
 }
 
 @end

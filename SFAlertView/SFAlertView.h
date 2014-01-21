@@ -35,12 +35,18 @@ typedef NS_ENUM(NSInteger, SFAlertViewStyle)
 
 @property (nonatomic, readonly) SFAlertViewStyle alertViewStyle;
 
+@property (nonatomic, copy) SFAlertViewHandler willShowHandler;
+@property (nonatomic, copy) SFAlertViewHandler didShowHandler;
+@property (nonatomic, copy) SFAlertViewHandler willDismissHandler;
+@property (nonatomic, copy) SFAlertViewHandler didDismissHandler;
+
 @property (nonatomic, assign) CGFloat alertViewPreferredWidth UI_APPEARANCE_SELECTOR;
 @property (nonatomic, assign) CGFloat buttonsPreferredWidth UI_APPEARANCE_SELECTOR;
 @property (nonatomic, strong) UIColor *closeButtonBackgroundColor UI_APPEARANCE_SELECTOR;
 @property (nonatomic, strong) UIColor *buttonColor UI_APPEARANCE_SELECTOR;
 @property (nonatomic, strong) UIColor *cancelButtonColor UI_APPEARANCE_SELECTOR;
 @property (nonatomic, strong) UIColor *destructiveButtonColor UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) UIColor *separatorColor UI_APPEARANCE_SELECTOR;
 
 @property (nonatomic, readonly, getter = isVisible) BOOL visible;
 
@@ -58,5 +64,7 @@ typedef NS_ENUM(NSInteger, SFAlertViewStyle)
 
 - (void)setCloseButtonImage:(UIImage *)defaultButtonImage
                    forState:(UIControlState)state UI_APPEARANCE_SELECTOR;
+
++ (void)cleanPopup;
 
 @end
