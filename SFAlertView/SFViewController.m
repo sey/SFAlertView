@@ -48,12 +48,16 @@
 
 - (IBAction)showPopupViewAction:(id)sender
 {
+    SFAlertView *appearance = [SFAlertView appearance];
+    [appearance setCloseButtonImage:[UIImage imageNamed:@"icon-close.png"]
+                           forState:UIControlStateNormal];
     {
         UINib *nib = [UINib nibWithNibName:@"SFPopupContentView" bundle:nil];
         NSArray *views = [nib instantiateWithOwner:nil options:nil];
         UIView *view = [views lastObject];
         
         SFAlertView *alertView = [SFAlertView new];
+        alertView.title = @"Ipsum Lorem Dolor";
         [alertView setContentView:view];
         [alertView show];
     }

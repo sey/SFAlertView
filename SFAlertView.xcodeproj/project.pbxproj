@@ -30,6 +30,8 @@
 		2F0872C0188D14A200C2F29A /* SFAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0872BF188D14A200C2F29A /* SFAlertView.m */; };
 		2FF425EF188D64D600D4CB3A /* SFPopupContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF425EE188D64D600D4CB3A /* SFPopupContentView.m */; };
 		2FF425F1188D64F400D4CB3A /* SFPopupContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FF425F0188D64F400D4CB3A /* SFPopupContentView.xib */; };
+		2FF425F4188E6F7900D4CB3A /* icon-close.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FF425F2188E6F7900D4CB3A /* icon-close.png */; };
+		2FF425F5188E6F7900D4CB3A /* icon-close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FF425F3188E6F7900D4CB3A /* icon-close@2x.png */; };
 		D12900F768A343A1A8D0B969 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A400AD1F642B422A9A550354 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +79,8 @@
 		2FF425ED188D64D600D4CB3A /* SFPopupContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPopupContentView.h; sourceTree = "<group>"; };
 		2FF425EE188D64D600D4CB3A /* SFPopupContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPopupContentView.m; sourceTree = "<group>"; };
 		2FF425F0188D64F400D4CB3A /* SFPopupContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFPopupContentView.xib; sourceTree = "<group>"; };
+		2FF425F2188E6F7900D4CB3A /* icon-close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-close.png"; sourceTree = "<group>"; };
+		2FF425F3188E6F7900D4CB3A /* icon-close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-close@2x.png"; sourceTree = "<group>"; };
 		6E22F1A8CDCA43EF9A393019 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		A400AD1F642B422A9A550354 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -143,6 +147,8 @@
 		2F08727F188AD73E00C2F29A /* SFAlertView */ = {
 			isa = PBXGroup;
 			children = (
+				2FF425F2188E6F7900D4CB3A /* icon-close.png */,
+				2FF425F3188E6F7900D4CB3A /* icon-close@2x.png */,
 				2F0872BE188D14A100C2F29A /* SFAlertView.h */,
 				2F0872BF188D14A200C2F29A /* SFAlertView.m */,
 				2F0872B4188ADD5300C2F29A /* SIAlertView.bundle */,
@@ -277,9 +283,11 @@
 			files = (
 				2F087290188AD73E00C2F29A /* Main_iPad.storyboard in Resources */,
 				2F0872B9188ADD5300C2F29A /* SIAlertView.bundle in Resources */,
+				2FF425F5188E6F7900D4CB3A /* icon-close@2x.png in Resources */,
 				2FF425F1188D64F400D4CB3A /* SFPopupContentView.xib in Resources */,
 				2F087295188AD73E00C2F29A /* Images.xcassets in Resources */,
 				2F08728D188AD73E00C2F29A /* Main_iPhone.storyboard in Resources */,
+				2FF425F4188E6F7900D4CB3A /* icon-close.png in Resources */,
 				2F087284188AD73E00C2F29A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

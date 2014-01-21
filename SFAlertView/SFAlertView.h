@@ -22,19 +22,27 @@ typedef NS_ENUM(NSInteger, SFAlertViewBackgroundStyle) {
     SFAlertViewBackgroundStyleSolid,
 };
 
+typedef NS_ENUM(NSInteger, SFAlertViewStyle)
+{
+    SFAlertViewStyleAlertView,
+    SFAlertViewStylePopup
+};
+
 @interface SFAlertView : UIView
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *message;
 
+@property (nonatomic, readonly) SFAlertViewStyle alertViewStyle;
+
 @property (nonatomic, assign) CGFloat alertViewPreferredWidth UI_APPEARANCE_SELECTOR;
 @property (nonatomic, assign) CGFloat buttonsPreferredWidth UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) UIColor *closeButtonBackgroundColor UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) UIColor *buttonColor UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) UIColor *cancelButtonColor UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) UIColor *destructiveButtonColor UI_APPEARANCE_SELECTOR;
 
 @property (nonatomic, readonly, getter = isVisible) BOOL visible;
-
-
-@property (nonatomic, strong) UIColor *closeButtonBackgroundColor UI_APPEARANCE_SELECTOR;
-
 
 - (id)initWithTitle:(NSString *)title andMessage:(NSString *)message;
 - (void)addButtonWithTitle:(NSString *)title
@@ -46,5 +54,9 @@ typedef NS_ENUM(NSInteger, SFAlertViewBackgroundStyle) {
 
 - (void)show;
 - (void)dismissAnimated:(BOOL)animated;
+
+
+- (void)setCloseButtonImage:(UIImage *)defaultButtonImage
+                   forState:(UIControlState)state UI_APPEARANCE_SELECTOR;
 
 @end

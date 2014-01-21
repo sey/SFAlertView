@@ -13,12 +13,6 @@
 const UIWindowLevel UIWindowLevelSFAlert = 1999.0;  // don't overlap system's alert
 const UIWindowLevel UIWindowLevelSFAlertBackground = 1998.0; // below the alert window
 
-typedef NS_ENUM(NSInteger, SFAlertViewStyle)
-{
-    SFAlertViewStyleAlertView,
-    SFAlertViewStylePopup
-};
-
 @class SFAlertBackgroundWindow;
 
 static NSMutableArray *__sf_alert_queue;
@@ -50,8 +44,6 @@ static SFAlertView *__sf_alert_current_view;
 @property (nonatomic, strong) UIViewController *contentViewController;
 
 @property (nonatomic, strong) NSMutableArray *buttons;
-
-@property (nonatomic, assign) SFAlertViewStyle alertViewStyle;
 
 + (NSMutableArray *)sharedQueue;
 + (SFAlertView *)currentAlertView;
@@ -328,6 +320,9 @@ static SFAlertView *__sf_alert_current_view;
     
     SFAlertView *appearance = [self appearance];
     appearance.closeButtonBackgroundColor = [UIColor redColor];
+    appearance.buttonColor = [UIColor greenColor];
+    appearance.cancelButtonColor = [UIColor blackColor];
+    appearance.destructiveButtonColor = [UIColor redColor];
     appearance.alertViewPreferredWidth = 450.0f;
     appearance.buttonsPreferredWidth = 150.0f;
 }
@@ -446,12 +441,14 @@ static SFAlertView *__sf_alert_current_view;
         {
             self.titleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
             
+            SFAlertView *appearance = [SFAlertView appearance];
+            
             UILabel *label = [UILabel new];
             label.numberOfLines = 0;
-            label.preferredMaxLayoutWidth = self.alertViewPreferredWidth - 40;
+            label.preferredMaxLayoutWidth = appearance.alertViewPreferredWidth - 40;
             label.text = self.message;
             
-            [label autoSetDimension:ALDimensionWidth toSize:self.alertViewPreferredWidth];
+            [label autoSetDimension:ALDimensionWidth toSize:appearance.alertViewPreferredWidth];
             [self setupContentView:label];
         }
     }
@@ -514,6 +511,8 @@ static SFAlertView *__sf_alert_current_view;
 
 - (void)setupHeaderView
 {
+    SFAlertView *appearance = [SFAlertView appearance];
+    
     self.headerView = ({
         UIView *view = [UIView new];
         view.translatesAutoresizingMaskIntoConstraints = NO;
@@ -536,7 +535,7 @@ static SFAlertView *__sf_alert_current_view;
         UILabel *label = [UILabel new];
         label.translatesAutoresizingMaskIntoConstraints = NO;
         label.numberOfLines = 0;
-        label.preferredMaxLayoutWidth = self.alertViewPreferredWidth - 40;
+        label.preferredMaxLayoutWidth = appearance.alertViewPreferredWidth - 40;
         label.text = self.title;
         label;
     });
@@ -552,6 +551,7 @@ static SFAlertView *__sf_alert_current_view;
     
     if (SFAlertViewStylePopup == self.alertViewStyle)
     {
+        [self.headerView autoSetDimension:ALDimensionHeight toSize:50.0f];
         [self.closeButton autoMatchDimension:ALDimensionWidth
                                  toDimension:ALDimensionHeight
                                       ofView:self.headerView];
@@ -667,8 +667,8 @@ static SFAlertView *__sf_alert_current_view;
     });
     
     self.buttons = [[NSMutableArray alloc] initWithCapacity:self.items.count];
-    
-    CGFloat buttonWidth = self.buttonsPreferredWidth;
+    SFAlertView *appearance = [SFAlertView appearance];
+    CGFloat buttonWidth = appearance.buttonsPreferredWidth;
     
     for (int i = 0; i < self.items.count; i++)
     {
@@ -720,7 +720,18 @@ static SFAlertView *__sf_alert_current_view;
     button.tag = index;
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
-    [button setBackgroundColor:[UIColor grayColor]];
+    if (SFAlertViewButtonTypeDestructive == item.type)
+    {
+        [button setBackgroundColor:self.destructiveButtonColor];
+    }
+    else if (SFAlertViewButtonTypeCancel == item.type)
+    {
+        [button setBackgroundColor:self.cancelButtonColor];
+    }
+    else if (SFAlertViewButtonTypeDefault == item.type)
+    {
+        [button setBackgroundColor:self.buttonColor];
+    }
     
     
     [button setTitle:item.title forState:UIControlStateNormal];
@@ -836,6 +847,19 @@ static SFAlertView *__sf_alert_current_view;
     window.hidden = NO;
 }
 
+- (void)setColor:(UIColor *)color toButtonsOfType:(SFAlertViewButtonType)type
+{
+    for (NSUInteger i = 0; i < self.items.count; i++)
+    {
+        SFAlertItem *item = self.items[i];
+        if (item.type == type)
+        {
+            UIButton *button = self.buttons[i];
+            button.backgroundColor = color;
+        }
+    }
+}
+
 #pragma mark - UI Appearance Methods
 
 - (void)setCloseButtonBackgroundColor:(UIColor *)closeButtonBackgroundColor
@@ -864,6 +888,43 @@ static SFAlertView *__sf_alert_current_view;
         return;
     }
     _buttonsPreferredWidth = buttonsPreferredWidth;
+}
+
+- (void)setCancelButtonColor:(UIColor *)cancelButtonColor
+{
+    if (_cancelButtonColor == cancelButtonColor)
+    {
+        return;
+    }
+    _cancelButtonColor = cancelButtonColor;
+    [self setColor:_cancelButtonColor toButtonsOfType:SFAlertViewButtonTypeCancel];
+    
+}
+
+- (void)setButtonColor:(UIColor *)buttonColor
+{
+    if (_buttonColor == buttonColor)
+    {
+        return;
+    }
+    _buttonColor = buttonColor;
+    [self setColor:_buttonColor toButtonsOfType:SFAlertViewButtonTypeDefault];
+}
+
+- (void)setDestructiveButtonColor:(UIColor *)destructiveButtonColor
+{
+    if (_destructiveButtonColor == destructiveButtonColor)
+    {
+        return;
+    }
+    _destructiveButtonColor = destructiveButtonColor;
+    [self setColor:_destructiveButtonColor toButtonsOfType:SFAlertViewButtonTypeDestructive];
+}
+
+- (void)setCloseButtonImage:(UIImage *)image
+                   forState:(UIControlState)state
+{
+    [self.closeButton setImage:image forState:state];
 }
 
 @end
