@@ -157,13 +157,6 @@ static SFAlertView *__sf_alert_current_view;
     UIViewController *viewController = [self.alertView.oldKeyWindow currentViewController];
     if (viewController)
     {
-        NSLog(@"UIInterfaceOrientationMaskPortrait: %d", UIInterfaceOrientationMaskPortrait);
-        NSLog(@"UIInterfaceOrientationMaskLandscapeLeft: %d", UIInterfaceOrientationMaskLandscapeLeft);
-        NSLog(@"UIInterfaceOrientationMaskLandscapeRight: %d", UIInterfaceOrientationMaskLandscapeRight);
-        NSLog(@"UIInterfaceOrientationMaskPortraitUpsideDown: %d", UIInterfaceOrientationMaskPortraitUpsideDown);
-        NSLog(@"UIInterfaceOrientationMaskLandscape: %d", UIInterfaceOrientationMaskLandscape);
-        NSLog(@"UIInterfaceOrientationMaskAll: %d", UIInterfaceOrientationMaskAll);
-        NSLog(@"UIInterfaceOrientationMaskAllButUpsideDown: %d", UIInterfaceOrientationMaskAllButUpsideDown);
         return [viewController supportedInterfaceOrientations];
     }
     return UIInterfaceOrientationMaskAll;
@@ -678,8 +671,6 @@ static SFAlertView *__sf_alert_current_view;
     
     [self.headerView addSubview:self.closeButton];
     [self.headerView addSubview:self.titleLabel];
-    
-    
     
     [self.closeButton autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:0.0f];
     [self.closeButton autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:0.0f];
