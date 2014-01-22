@@ -803,8 +803,8 @@ static SFAlertView *__sf_alert_current_view;
         [self.buttonsContainerView addSubview:button];
         [self.buttons addObject:button];
         
-        [button autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:10.0f];
-        [button autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:10.0f];
+        [button autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:5.0f];
+        [button autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:5.0f];
     }
     
     if (self.buttons.count > 1)
