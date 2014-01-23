@@ -49,6 +49,7 @@ typedef NS_ENUM(NSInteger, SFAlertViewStyle)
 @property (nonatomic, strong) UIColor *separatorColor UI_APPEARANCE_SELECTOR;
 
 @property (nonatomic, readonly, getter = isVisible) BOOL visible;
+@property (nonatomic, assign) BOOL hideCloseButton;
 
 - (id)initWithTitle:(NSString *)title andMessage:(NSString *)message;
 - (void)addButtonWithTitle:(NSString *)title
@@ -66,5 +67,11 @@ typedef NS_ENUM(NSInteger, SFAlertViewStyle)
                    forState:(UIControlState)state UI_APPEARANCE_SELECTOR;
 
 + (void)cleanPopup;
+
+@end
+
+@interface UIViewController (SFAlertView)
+
+@property (nonatomic, readonly, strong) SFAlertView *alertView;
 
 @end

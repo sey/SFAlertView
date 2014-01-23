@@ -7,6 +7,8 @@
 //
 
 #import "SFViewController.h"
+#import "SFPopupViewController.h"
+
 #import "SFAlertView.h"
 
 @interface SFViewController ()
@@ -74,6 +76,15 @@
     [appearance setCloseButtonImage:[UIImage imageNamed:@"icon-close.png"]
                            forState:UIControlStateNormal];
     {
+        SFPopupViewController *controller = [SFPopupViewController new];
+        SFAlertView *alertView = [SFAlertView new];
+        //alertView.title = @"Ipsum Lorem Dolor";
+        alertView.hideCloseButton = YES;
+        [alertView setContentViewController:controller];
+        [alertView show];
+    }
+    /*
+    {
         UINib *nib = [UINib nibWithNibName:@"SFPopupContentView" bundle:nil];
         NSArray *views = [nib instantiateWithOwner:nil options:nil];
         UIView *view = [views lastObject];
@@ -83,7 +94,7 @@
         [alertView setContentView:view];
         [alertView show];
     }
-    
+    */
     
 }
 

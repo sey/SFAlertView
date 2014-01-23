@@ -10,6 +10,9 @@
 #import "UIWindow+SIUtils.h"
 #import "UIView+Autolayout.h"
 
+#import <objc/runtime.h>
+#import <objc/message.h>
+
 const UIWindowLevel UIWindowLevelSFAlert = 1999.0;  // don't overlap system's alert
 const UIWindowLevel UIWindowLevelSFAlertBackground = 1998.0; // below the alert window
 
@@ -108,6 +111,12 @@ static SFAlertView *__sf_alert_current_view;
         }
     }
 }
+
+@end
+
+@interface UIViewController (SFAlertView_Internal)
+
+- (void)setAlertView:(SFAlertView *)alertView;
 
 @end
 
@@ -378,6 +387,12 @@ static SFAlertView *__sf_alert_current_view;
 	item.type = type;
 	item.action = handler;
 	[self.items addObject:item];
+}
+
+- (void)setContentViewController:(UIViewController *)viewController
+{
+    _contentViewController = viewController;
+    [_contentViewController setAlertView:self];
 }
 
 - (void)show
@@ -678,10 +693,25 @@ static SFAlertView *__sf_alert_current_view;
     
     if (SFAlertViewStylePopup == self.alertViewStyle)
     {
-        [self.headerView autoSetDimension:ALDimensionHeight toSize:50.0f];
-        [self.closeButton autoMatchDimension:ALDimensionWidth
-                                 toDimension:ALDimensionHeight
-                                      ofView:self.headerView];
+        if (self.title)
+        {
+            [self.headerView autoSetDimension:ALDimensionHeight toSize:50.0f];
+            
+            if (self.hideCloseButton)
+            {
+                [self.closeButton autoSetDimension:ALDimensionWidth toSize:0.0f];
+            }
+            else
+            {
+                [self.closeButton autoMatchDimension:ALDimensionWidth
+                                         toDimension:ALDimensionHeight
+                                              ofView:self.headerView];
+            }
+        }
+        else
+        {
+            [self.headerView autoSetDimension:ALDimensionHeight toSize:0.0f];
+        }
     }
     else
     {
@@ -733,6 +763,10 @@ static SFAlertView *__sf_alert_current_view;
     [self.separatorView autoSetDimension:ALDimensionHeight toSize:1.0f];
     
     if (SFAlertViewStyleAlertView == self.alertViewStyle)
+    {
+        self.separatorView.hidden = YES;
+    }
+    else if (SFAlertViewStylePopup == self.alertViewStyle && !self.title)
     {
         self.separatorView.hidden = YES;
     }
@@ -1074,6 +1108,28 @@ static SFAlertView *__sf_alert_current_view;
     }
     _separatorColor = separatorColor;
     self.separatorView.backgroundColor = _separatorColor;
+}
+
+@end
+
+@implementation UIViewController (SFAlertView)
+
+@dynamic alertView;
+
+static const char *alertViewKey = "alertViewKey";
+
+- (SFAlertView *)alertView_core {
+    return objc_getAssociatedObject(self, alertViewKey);
+}
+
+- (SFAlertView *)alertView {
+    SFAlertView* result = [self alertView_core];
+    return result;
+}
+
+- (void)setAlertView:(SFAlertView *)alertView
+{
+    objc_setAssociatedObject(self, alertViewKey, alertView, OBJC_ASSOCIATION_ASSIGN);
 }
 
 @end

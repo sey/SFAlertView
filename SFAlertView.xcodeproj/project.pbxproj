@@ -25,6 +25,8 @@
 		2F0872BB188ADD5300C2F29A /* UIWindow+SIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0872B8188ADD5300C2F29A /* UIWindow+SIUtils.m */; };
 		2F0872BD188D140600C2F29A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F0872BC188D140600C2F29A /* QuartzCore.framework */; };
 		2F0872C0188D14A200C2F29A /* SFAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0872BF188D14A200C2F29A /* SFAlertView.m */; };
+		2FF1AE6718917464008A8D3D /* SFPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF1AE6518917464008A8D3D /* SFPopupViewController.m */; };
+		2FF1AE6818917464008A8D3D /* SFPopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FF1AE6618917464008A8D3D /* SFPopupViewController.xib */; };
 		2FF425EF188D64D600D4CB3A /* SFPopupContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF425EE188D64D600D4CB3A /* SFPopupContentView.m */; };
 		2FF425F1188D64F400D4CB3A /* SFPopupContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FF425F0188D64F400D4CB3A /* SFPopupContentView.xib */; };
 		2FF425F4188E6F7900D4CB3A /* icon-close.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FF425F2188E6F7900D4CB3A /* icon-close.png */; };
@@ -68,6 +70,9 @@
 		2F0872BC188D140600C2F29A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2F0872BE188D14A100C2F29A /* SFAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAlertView.h; sourceTree = "<group>"; };
 		2F0872BF188D14A200C2F29A /* SFAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAlertView.m; sourceTree = "<group>"; };
+		2FF1AE6418917464008A8D3D /* SFPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPopupViewController.h; sourceTree = "<group>"; };
+		2FF1AE6518917464008A8D3D /* SFPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPopupViewController.m; sourceTree = "<group>"; };
+		2FF1AE6618917464008A8D3D /* SFPopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFPopupViewController.xib; sourceTree = "<group>"; };
 		2FF425ED188D64D600D4CB3A /* SFPopupContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPopupContentView.h; sourceTree = "<group>"; };
 		2FF425EE188D64D600D4CB3A /* SFPopupContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPopupContentView.m; sourceTree = "<group>"; };
 		2FF425F0188D64F400D4CB3A /* SFPopupContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFPopupContentView.xib; sourceTree = "<group>"; };
@@ -156,6 +161,9 @@
 				2FF425ED188D64D600D4CB3A /* SFPopupContentView.h */,
 				2FF425EE188D64D600D4CB3A /* SFPopupContentView.m */,
 				2FF425F0188D64F400D4CB3A /* SFPopupContentView.xib */,
+				2FF1AE6418917464008A8D3D /* SFPopupViewController.h */,
+				2FF1AE6518917464008A8D3D /* SFPopupViewController.m */,
+				2FF1AE6618917464008A8D3D /* SFPopupViewController.xib */,
 			);
 			path = SFAlertView;
 			sourceTree = "<group>";
@@ -274,6 +282,7 @@
 				2F087295188AD73E00C2F29A /* Images.xcassets in Resources */,
 				2F08728D188AD73E00C2F29A /* Main_iPhone.storyboard in Resources */,
 				2FF425F4188E6F7900D4CB3A /* icon-close.png in Resources */,
+				2FF1AE6818917464008A8D3D /* SFPopupViewController.xib in Resources */,
 				2F087284188AD73E00C2F29A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,6 +337,7 @@
 			files = (
 				2F087286188AD73E00C2F29A /* main.m in Sources */,
 				2FF425EF188D64D600D4CB3A /* SFPopupContentView.m in Sources */,
+				2FF1AE6718917464008A8D3D /* SFPopupViewController.m in Sources */,
 				2F087293188AD73E00C2F29A /* SFViewController.m in Sources */,
 				2F08728A188AD73E00C2F29A /* SFAppDelegate.m in Sources */,
 				2F0872C0188D14A200C2F29A /* SFAlertView.m in Sources */,
