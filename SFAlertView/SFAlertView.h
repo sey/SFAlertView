@@ -47,6 +47,10 @@ typedef NS_ENUM(NSInteger, SFAlertViewStyle)
 @property (nonatomic, strong) UIColor *cancelButtonColor UI_APPEARANCE_SELECTOR;
 @property (nonatomic, strong) UIColor *destructiveButtonColor UI_APPEARANCE_SELECTOR;
 @property (nonatomic, strong) UIColor *separatorColor UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) UIFont *titleFont UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) UIFont *messageFont UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) UIColor *titleColor UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) UIColor *messageColor UI_APPEARANCE_SELECTOR;
 
 @property (nonatomic, readonly, getter = isVisible) BOOL visible;
 @property (nonatomic, assign) BOOL hideCloseButton;

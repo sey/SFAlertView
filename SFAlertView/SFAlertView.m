@@ -328,6 +328,10 @@ static SFAlertView *__sf_alert_current_view;
     appearance.separatorColor = [UIColor grayColor];
     appearance.alertViewPreferredWidth = 450.0f;
     appearance.buttonsPreferredWidth = 150.0f;
+    appearance.titleColor = [UIColor blackColor];
+    appearance.messageColor = [UIColor blackColor];
+    appearance.titleFont = [UIFont systemFontOfSize:20];
+    appearance.messageFont = [UIFont systemFontOfSize:17];
 }
 
 + (void)cleanPopup
@@ -1103,6 +1107,46 @@ static SFAlertView *__sf_alert_current_view;
     }
     _separatorColor = separatorColor;
     self.separatorView.backgroundColor = _separatorColor;
+}
+
+- (void)setTitleFont:(UIFont *)titleFont
+{
+    if (_titleFont == titleFont)
+    {
+        return;
+    }
+    _titleFont = titleFont;
+    self.titleLabel.font = _titleFont;
+}
+
+- (void)setMessageFont:(UIFont *)messageFont
+{
+    if (_messageFont == messageFont)
+    {
+        return;
+    }
+    _messageFont = messageFont;
+    self.messageLabel.font = _messageFont;
+}
+
+- (void)setTitleColor:(UIColor *)titleColor
+{
+    if (_titleColor == titleColor)
+    {
+        return;
+    }
+    _titleColor = titleColor;
+    self.titleLabel.textColor = _titleColor;
+}
+
+- (void)setMessageColor:(UIColor *)messageColor
+{
+    if (_messageColor == messageColor)
+    {
+        return;
+    }
+    _messageColor = messageColor;
+    self.messageLabel.textColor = _messageColor;
 }
 
 @end
