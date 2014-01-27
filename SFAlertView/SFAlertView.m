@@ -715,7 +715,6 @@ static SFAlertView *__sf_alert_current_view;
     }
     else
     {
-        self.titleLabel.textAlignment = NSTextAlignmentCenter;
         [self.closeButton autoSetDimension:ALDimensionWidth toSize:0.0f];
         
         if (self.title)
