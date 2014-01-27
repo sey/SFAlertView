@@ -762,11 +762,7 @@ static SFAlertView *__sf_alert_current_view;
                                          withInset:0.0f];
     [self.separatorView autoSetDimension:ALDimensionHeight toSize:1.0f];
     
-    if (SFAlertViewStyleAlertView == self.alertViewStyle)
-    {
-        self.separatorView.hidden = YES;
-    }
-    else if (SFAlertViewStylePopup == self.alertViewStyle && !self.title)
+    if (!self.title)
     {
         self.separatorView.hidden = YES;
     }
