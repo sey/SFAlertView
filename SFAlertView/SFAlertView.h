@@ -59,6 +59,10 @@ typedef NS_ENUM(NSInteger, SFAlertViewStyle)
 - (void)addButtonWithTitle:(NSString *)title
                       type:(SFAlertViewButtonType)type
                    handler:(SFAlertViewHandler)handler;
+- (void)addButtonWithTitle:(NSString *)title
+                     image:(UIImage *)image
+                      type:(SFAlertViewButtonType)type
+                   handler:(SFAlertViewHandler)handler;
 
 - (void)setContentView:(UIView *)view;
 - (void)setContentViewController:(UIViewController *)viewController;

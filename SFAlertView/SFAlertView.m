@@ -220,6 +220,7 @@ static SFAlertView *__sf_alert_current_view;
 @interface SFAlertItem : NSObject
 
 @property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) UIImage *image;
 @property (nonatomic, assign) SFAlertViewButtonType type;
 @property (nonatomic, copy) SFAlertViewHandler action;
 
@@ -386,8 +387,17 @@ static SFAlertView *__sf_alert_current_view;
                       type:(SFAlertViewButtonType)type
                    handler:(SFAlertViewHandler)handler
 {
+    [self addButtonWithTitle:title image:nil type:type handler:handler];
+}
+
+- (void)addButtonWithTitle:(NSString *)title
+                     image:(UIImage *)image
+                      type:(SFAlertViewButtonType)type
+                   handler:(SFAlertViewHandler)handler
+{
     SFAlertItem *item = [SFAlertItem new];
 	item.title = title;
+    item.image = image;
 	item.type = type;
 	item.action = handler;
 	[self.items addObject:item];
@@ -879,6 +889,7 @@ static SFAlertView *__sf_alert_current_view;
     button.translatesAutoresizingMaskIntoConstraints = NO;
     button.tag = index;
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [button setImage:item.image forState:UIControlStateNormal];
     
     if (SFAlertViewButtonTypeDestructive == item.type)
     {

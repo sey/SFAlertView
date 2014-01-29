@@ -41,7 +41,7 @@
 
 - (IBAction)showAlertViewAction:(id)sender
 {
-    [[SFAlertView appearance] setButtonsPreferredWidth:150];
+    [[SFAlertView appearance] setButtonsPreferredWidth:180];
     {
         SFAlertView *alertView = [[SFAlertView alloc] initWithTitle:@"Ullamcorper Dapibus Nibh"
                                                          andMessage:@"Sit Dolor Bibendum Venenatis"];
@@ -49,23 +49,7 @@
         [alertView addButtonWithTitle:@"Cancel" type:SFAlertViewButtonTypeCancel handler:^(SFAlertView *alertView) {
             
         }];
-        [alertView addButtonWithTitle:@"Ok" type:SFAlertViewButtonTypeDefault handler:nil];
-        [alertView show];
-    }
-    
-    {
-        SFAlertView *alertView = [[SFAlertView alloc] initWithTitle:@"Vehicula Amet Elit"
-                                                         andMessage:@"Vestibulum id ligula porta felis euismod semper. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum."];
-        
-        [alertView addButtonWithTitle:@"Ok" type:SFAlertViewButtonTypeDefault handler:nil];
-        [alertView show];
-    }
-    
-    {
-        SFAlertView *alertView = [[SFAlertView alloc] initWithTitle:nil
-                                                         andMessage:@"Vestibulum id ligula porta felis euismod semper. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum."];
-        
-        [alertView addButtonWithTitle:@"Ok" type:SFAlertViewButtonTypeDefault handler:nil];
+        [alertView addButtonWithTitle:@"DECONNEXION" image:[UIImage imageNamed:@"on-off.png"] type:SFAlertViewButtonTypeDefault handler:nil];
         [alertView show];
     }
 }
