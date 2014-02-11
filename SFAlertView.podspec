@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "SFAlertView"
-  s.version      = "1.0.7"
+  s.version      = "1.0.8"
   s.summary      = "A highly configurable content hugging alert view."
 
   s.description  = <<-DESC
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, '6.1'
 
-  s.source       = { :git => "https://github.com/sey/SFAlertView.git", :tag => "1.0.7" }
+  s.source       = { :git => "https://github.com/sey/SFAlertView.git", :tag => "1.0.8" }
 
   s.source_files  = 'SFAlertView/SFAlertView.{h,m}', 'SFAlertView/UIWindow+SIUtils.{h,m}'
 

@@ -847,7 +847,7 @@ static SFAlertView *__sf_alert_current_view;
         [self.buttons addObject:button];
         
         [button autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:5.0f];
-        [button autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:5.0f];
+        [button autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:10.0f];
     }
     
     if (self.buttons.count > 1)
