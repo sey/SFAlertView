@@ -30,8 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
+    [SFAlertView class];
 }
 
 - (void)logout
@@ -41,17 +40,24 @@
 
 - (IBAction)showAlertViewAction:(id)sender
 {
+    [[SFAlertView appearance] setAlertViewPreferredWidth:400];
     [[SFAlertView appearance] setButtonsPreferredWidth:180];
     {
         SFAlertView *alertView = [[SFAlertView alloc] initWithTitle:@"Ullamcorper Dapibus Nibh"
                                                          andMessage:@"Sit Dolor Bibendum Venenatis"];
         
-        [alertView addButtonWithTitle:@"Cancel" type:SFAlertViewButtonTypeCancel handler:^(SFAlertView *alertView) {
-            
-        }];
+//        [alertView addButtonWithTitle:@"Cancel" type:SFAlertViewButtonTypeCancel handler:^(SFAlertView *alertView) {
+//            
+//        }];
         [alertView addButtonWithTitle:@"DECONNEXION" image:[UIImage imageNamed:@"on-off.png"] type:SFAlertViewButtonTypeDefault handler:nil];
         [alertView show];
+        
+        
     }
+    
+#ifdef __LP64__
+    NSLog(@"youpi64");
+#endif
 }
 
 - (IBAction)showPopupViewAction:(id)sender

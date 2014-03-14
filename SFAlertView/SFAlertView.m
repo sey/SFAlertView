@@ -39,9 +39,13 @@ static SFAlertView *__sf_alert_current_view;
 @property (nonatomic, strong) UIView *separatorView;
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) UIView *buttonsContainerView;
+
 @property (nonatomic, strong) UIButton *closeButton;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *messageLabel;
+
+@property (nonatomic, strong) NSLayoutConstraint *messageLabelWidthConstraint;
+@property (nonatomic, strong) NSArray *buttonsWidthConstraints;
 
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) UIViewController *contentViewController;
@@ -606,8 +610,9 @@ static SFAlertView *__sf_alert_current_view;
             label.preferredMaxLayoutWidth = appearance.alertViewPreferredWidth - 40;
             label.text = self.message;
             
-            [label autoSetDimension:ALDimensionWidth toSize:appearance.alertViewPreferredWidth];
-            [self setupContentView:label];
+            self.messageLabelWidthConstraint = [label autoSetDimension:ALDimensionWidth toSize:appearance.alertViewPreferredWidth];
+            self.messageLabel = label;
+            [self setupContentView:self.messageLabel];
         }
     }
     else if (SFAlertViewStylePopup == self.alertViewStyle)
@@ -837,31 +842,16 @@ static SFAlertView *__sf_alert_current_view;
     });
     
     self.buttons = [[NSMutableArray alloc] initWithCapacity:self.items.count];
-    SFAlertView *appearance = [SFAlertView appearance];
-    CGFloat buttonWidth = appearance.buttonsPreferredWidth;
     
     for (int i = 0; i < self.items.count; i++)
     {
         UIButton *button = [self buttonWithIndex:i];
         [self.buttonsContainerView addSubview:button];
         [self.buttons addObject:button];
-        
-        [button autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:5.0f];
-        [button autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:10.0f];
     }
     
-    if (self.buttons.count > 1)
-    {
-        [self.buttons autoDistributeViewsAlongAxis:ALAxisHorizontal
-                                     withFixedSize:buttonWidth
-                                         alignment:NSLayoutFormatAlignAllBaseline];
-    }
-    else
-    {
-        UIButton *button = [self.buttons lastObject];
-        [button autoSetDimension:ALDimensionWidth toSize:buttonWidth];
-        [button autoCenterInSuperview];
-    }
+    SFAlertView *appearance = [SFAlertView appearance];
+    [self updateButtonsWidthConstraints:appearance.buttonsPreferredWidth];
     
     [self addSubview:self.buttonsContainerView];
     
@@ -879,6 +869,41 @@ static SFAlertView *__sf_alert_current_view;
     [self.buttonsContainerView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:0.0f];
     [self.buttonsContainerView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:0.0f];
     [self.buttonsContainerView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:0.0f];
+}
+
+- (void)updateButtonsWidthConstraints:(CGFloat)buttonWidth
+{
+    if (self.buttons.count > 1)
+    {
+        [self.buttons makeObjectsPerformSelector:@selector(removeFromSuperview)];
+        for (UIButton *button in self.buttons)
+        {
+            [button removeConstraints:button.constraints];
+            [self.buttonsContainerView addSubview:button];
+            [button autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:5.0f];
+            [button autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:10.0f];
+        }
+        self.buttonsWidthConstraints = [self.buttons
+                                        autoDistributeViewsAlongAxis:ALAxisHorizontal
+                                        withFixedSize:buttonWidth
+                                        alignment:NSLayoutFormatAlignAllBaseline];
+    }
+    else
+    {
+        UIButton *button = [self.buttons lastObject];
+        if (self.buttonsWidthConstraints)
+        {
+            [button removeConstraints:self.buttonsWidthConstraints];
+            
+        }
+        
+        NSLayoutConstraint *widthConstraint = [button
+                                               autoSetDimension:ALDimensionWidth
+                                               toSize:buttonWidth];
+        self.buttonsWidthConstraints = @[ widthConstraint ];
+        [button autoRemoveConstraintsAffectingView];
+        [button autoCenterInSuperview];
+    }
 }
 
 - (UIButton *)buttonWithIndex:(NSUInteger)index
@@ -1062,6 +1087,10 @@ static SFAlertView *__sf_alert_current_view;
         return;
     }
     _alertViewPreferredWidth = alertViewPreferredWidth;
+    
+    self.titleLabel.preferredMaxLayoutWidth = _alertViewPreferredWidth - 40;
+    self.messageLabel.preferredMaxLayoutWidth = _alertViewPreferredWidth - 40;
+    self.messageLabelWidthConstraint.constant = _alertViewPreferredWidth;
 }
 
 - (void)setButtonsPreferredWidth:(CGFloat)buttonsPreferredWidth
@@ -1071,6 +1100,7 @@ static SFAlertView *__sf_alert_current_view;
         return;
     }
     _buttonsPreferredWidth = buttonsPreferredWidth;
+    [self updateButtonsWidthConstraints:_buttonsPreferredWidth];
 }
 
 - (void)setCancelButtonColor:(UIColor *)cancelButtonColor
