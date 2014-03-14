@@ -902,6 +902,8 @@ static SFAlertView *__sf_alert_current_view;
                                                autoSetDimension:ALDimensionWidth
                                                toSize:buttonWidth];
         self.buttonsWidthConstraints = @[ widthConstraint ];
+        [button autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:5.0f];
+        [button autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:10.0f];
         [button autoCenterInSuperview];
     }
 }
