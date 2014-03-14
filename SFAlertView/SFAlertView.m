@@ -894,14 +894,14 @@ static SFAlertView *__sf_alert_current_view;
         if (self.buttonsWidthConstraints)
         {
             [button removeConstraints:self.buttonsWidthConstraints];
-            
         }
+        
+        [button autoRemoveConstraintsAffectingView];
         
         NSLayoutConstraint *widthConstraint = [button
                                                autoSetDimension:ALDimensionWidth
                                                toSize:buttonWidth];
         self.buttonsWidthConstraints = @[ widthConstraint ];
-        [button autoRemoveConstraintsAffectingView];
         [button autoCenterInSuperview];
     }
 }
