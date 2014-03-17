@@ -891,6 +891,11 @@ static SFAlertView *__sf_alert_current_view;
     else
     {
         UIButton *button = [self.buttons lastObject];
+        if (!button)
+        {
+            return;
+        }
+        
         if (self.buttonsWidthConstraints)
         {
             [button removeConstraints:self.buttonsWidthConstraints];
@@ -904,7 +909,7 @@ static SFAlertView *__sf_alert_current_view;
         self.buttonsWidthConstraints = @[ widthConstraint ];
         [button autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:5.0f];
         [button autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:10.0f];
-        [button autoCenterInSuperview];
+        [button autoAlignAxisToSuperviewAxis:ALAxisVertical];
     }
 }
 
