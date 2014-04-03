@@ -1089,10 +1089,6 @@ static SFAlertView *__sf_alert_current_view;
 
 - (void)setAlertViewPreferredWidth:(CGFloat)alertViewPreferredWidth
 {
-    if (_alertViewPreferredWidth == alertViewPreferredWidth)
-    {
-        return;
-    }
     _alertViewPreferredWidth = alertViewPreferredWidth;
     
     self.titleLabel.preferredMaxLayoutWidth = _alertViewPreferredWidth - 40;
