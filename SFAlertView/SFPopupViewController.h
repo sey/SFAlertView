@@ -10,4 +10,6 @@
 
 @interface SFPopupViewController : UIViewController
 
+@property (nonatomic, weak) IBOutlet UILabel *label;
+
 @end

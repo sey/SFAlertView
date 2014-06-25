@@ -857,7 +857,14 @@ static SFAlertView *__sf_alert_current_view;
     
     if (SFAlertViewStylePopup == self.alertViewStyle)
     {
-        [self.buttonsContainerView autoSetDimension:ALDimensionHeight toSize:0.0f];
+        if (self.items.count > 0)
+        {
+            [self.buttonsContainerView autoSetDimension:ALDimensionHeight toSize:50.0f];
+        }
+        else
+        {
+            [self.buttonsContainerView autoSetDimension:ALDimensionHeight toSize:0.0f];
+        }
     }
     else
     {

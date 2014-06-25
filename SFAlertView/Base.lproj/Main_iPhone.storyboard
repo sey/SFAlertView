@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,44 +17,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l93-hv-9m6">
-                                <rect key="frame" x="10" y="518" width="300" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="fNd-FS-bYm"/>
-                                </constraints>
-                                <state key="normal" title="Show Alert View">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="WXd-fR-Oco">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <action selector="showAlertViewAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="bKl-9h-I51"/>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="MEd-p9-usj"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="R6g-4S-ZVV"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6V-Nw-bPI">
-                                <rect key="frame" x="10" y="480" width="300" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="YFi-Yk-zoK"/>
-                                    <constraint firstAttribute="height" constant="30" id="jhf-bk-6RX"/>
-                                </constraints>
-                                <state key="normal" title="Show Popup">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="showPopupViewAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="5c9-qm-kWn"/>
-                                </connections>
-                            </button>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="84B-ZK-w5w" firstAttribute="top" secondItem="l93-hv-9m6" secondAttribute="bottom" constant="20" id="4tA-Ik-BfM"/>
-                            <constraint firstAttribute="trailing" secondItem="Y6V-Nw-bPI" secondAttribute="trailing" constant="10" id="Y2m-xV-QUz"/>
-                            <constraint firstItem="l93-hv-9m6" firstAttribute="top" secondItem="Y6V-Nw-bPI" secondAttribute="bottom" constant="8" id="c2w-fF-EdV"/>
-                            <constraint firstAttribute="trailing" secondItem="l93-hv-9m6" secondAttribute="trailing" constant="10" id="dh1-l4-6l0"/>
-                            <constraint firstItem="Y6V-Nw-bPI" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="10" id="eG7-bD-Tla"/>
-                            <constraint firstItem="l93-hv-9m6" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="10" id="m5m-OI-weS"/>
+                            <constraint firstItem="WXd-fR-Oco" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="JZe-O1-HwB"/>
+                            <constraint firstAttribute="trailing" secondItem="WXd-fR-Oco" secondAttribute="trailing" id="OgI-Jn-1yA"/>
+                            <constraint firstItem="WXd-fR-Oco" firstAttribute="top" secondItem="pVn-7c-Qc7" secondAttribute="bottom" id="TXF-C5-9de"/>
+                            <constraint firstAttribute="bottom" secondItem="WXd-fR-Oco" secondAttribute="bottom" id="ldc-Ic-KVE"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="WXd-fR-Oco" id="Z4W-21-guG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

@@ -1,10 +1,15 @@
 PODS:
+  - Nimbus/AttributedLabel (1.0.0):
+    - Nimbus/Core
+  - Nimbus/Core (1.0.0)
   - UIView+AutoLayout (1.1.0)
 
 DEPENDENCIES:
+  - Nimbus/AttributedLabel (= 1.0.0)
   - UIView+AutoLayout (= 1.1.0)
 
 SPEC CHECKSUMS:
-  UIView+AutoLayout: 94cea4d2f3ed095434afdf6ed2a6d288f7f2d611
+  Nimbus: a1673dd214d31450b31f8755d66a8ae45edd1da8
+  UIView+AutoLayout: b890403c6d906f721632070475af94b3875737d3
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.33.1
