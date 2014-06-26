@@ -630,6 +630,7 @@ static SFAlertView *__sf_alert_current_view;
 
 - (void)teardown
 {
+    [_contentViewController setAlertView:nil];
     [self.headerView removeFromSuperview];
     [self.separatorView removeFromSuperview];
     [self.containerView removeFromSuperview];
