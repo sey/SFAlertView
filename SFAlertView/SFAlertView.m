@@ -16,6 +16,10 @@
 const UIWindowLevel UIWindowLevelSFAlert = 1999.0;  // don't overlap system's alert
 const UIWindowLevel UIWindowLevelSFAlertBackground = 1998.0; // below the alert window
 
+#define IS_IOS8 ([[[UIDevice currentDevice] systemVersion] \
+                    compare:@"8.0" options:NSNumericSearch] != \
+                    NSOrderedAscending)
+
 @class SFAlertBackgroundWindow;
 
 static NSMutableArray *__sf_alert_queue;
@@ -272,8 +276,11 @@ static SFAlertView *__sf_alert_current_view;
 {
     if (!__sf_alert_background_window)
     {
+        UIScreen *screen = [UIScreen mainScreen];
+        CGRect bounds = (IS_IOS8) ? screen.nativeBounds : screen.bounds;
+        
         __sf_alert_background_window = [[SFAlertBackgroundWindow alloc]
-                                        initWithFrame:[UIScreen mainScreen].bounds
+                                        initWithFrame:bounds
                                         andStyle:SFAlertViewBackgroundStyleGradient];
         [__sf_alert_background_window makeKeyAndVisible];
         __sf_alert_background_window.alpha = 0;
